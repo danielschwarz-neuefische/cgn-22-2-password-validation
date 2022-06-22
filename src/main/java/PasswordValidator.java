@@ -2,7 +2,10 @@ public class PasswordValidator {
 
 
     public static boolean isValid(String password) {
-        return containsDigit(password) && isLongerThan7(password);
+        return containsDigit(password)
+                && isLongerThan7(password)
+                && containsLowerCase(password)
+                && containsUpperCase(password);
     }
 
     public static boolean isLongerThan7(String password) {
@@ -16,5 +19,13 @@ public class PasswordValidator {
             }
         }
         return false;
+    }
+
+    public static boolean containsLowerCase(String password) {
+        return !password.equals(password.toUpperCase());
+    }
+
+    public static boolean containsUpperCase(String password) {
+        return !password.equals(password.toLowerCase());
     }
 }

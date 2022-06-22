@@ -34,7 +34,42 @@ public class PasswordValidatorTest {
     }
 
     @Test
+    void passwordContainsDigitAndIsLongEnoughButOnlyUpperCase(){
+        Assertions.assertEquals(false, PasswordValidator.isValid("PASSWORD1"));
+    }
+
+    @Test
+    void passwordContainsDigitAndIsLongEnoughButOnlyLowerCase(){
+        Assertions.assertEquals(false, PasswordValidator.isValid("password1"));
+    }
+
+    @Test
     void passwordIsValid() {
         Assertions.assertEquals(true, PasswordValidator.isValid("Test123456789"));
+    }
+
+    @Test
+    void passwordContainsLowerCase(){
+        Assertions.assertEquals(true, PasswordValidator.containsLowerCase("a"));
+    }
+
+    @Test
+    void passwordDoesNotContainLowerCase() {
+        Assertions.assertEquals(false, PasswordValidator.containsLowerCase("A"));
+    }
+
+    @Test
+    void passwordWithSSContainLowerCase() {
+        Assertions.assertEquals(true, PasswordValidator.containsLowerCase("ß"));
+    }
+
+    @Test
+    void passwordContainsUpperCase(){
+        Assertions.assertEquals(true, PasswordValidator.containsUpperCase("A"));
+    }
+
+    @Test
+    void passwordDoesNotContainUpperCase() {
+        Assertions.assertEquals(false, PasswordValidator.containsUpperCase("a"));
     }
 }
