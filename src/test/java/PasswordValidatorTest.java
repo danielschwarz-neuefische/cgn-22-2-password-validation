@@ -44,6 +44,11 @@ public class PasswordValidatorTest {
     }
 
     @Test
+    void passwordContainsDigitAndIsLongEnoughAndContainsUpperAndLowerCaseButIsProhibited(){
+        Assertions.assertEquals(false, PasswordValidator.isValid("Password1"));
+    }
+
+    @Test
     void passwordIsValid() {
         Assertions.assertEquals(true, PasswordValidator.isValid("Test123456789"));
     }
@@ -71,5 +76,20 @@ public class PasswordValidatorTest {
     @Test
     void passwordDoesNotContainUpperCase() {
         Assertions.assertEquals(false, PasswordValidator.containsUpperCase("a"));
+    }
+
+    @Test
+    void passwordIsPassword1() {
+        Assertions.assertEquals(true, PasswordValidator.isInSetOfProhibitedTexts("Password1"));
+    }
+
+    @Test
+    void passwordIsMarmeladenBrot123(){
+        Assertions.assertEquals(false, PasswordValidator.isInSetOfProhibitedTexts("MarmeladenBrot123"));
+    }
+
+    @Test
+    void passwordIsGeheim123() {
+        Assertions.assertEquals(true, PasswordValidator.isInSetOfProhibitedTexts("Geheim123"));
     }
 }
